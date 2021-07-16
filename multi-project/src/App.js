@@ -1,32 +1,25 @@
 import './index.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-//Components
-import Navbar from './components/Navbar';
-
-//Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Algos from './pages/Algos';
+import React, { useState } from 'react';
+import components from './componentList';
 
 function App() {
+
+  const [componentId, setComponentId] = useState(0);
+  const [render, setRender] = useState(false);
+
+  const handleClick = (id) => {
+    setComponentId(components[id].id);
+    setRender(true);
+};
+
   return (
     <div>
-      <Router>
-        <Navbar/>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/algos">
-            <Algos />
-          </Route>
-        </Switch>
-      </Router>
-      
+      <div>
+        {components.map((Component, index) => <button className="btn-component-selecor" key={index} onClick={() => handleClick(index)}>{Component.name}</button>)}
+      </div>
+      <div>
+        {render && React.createElement(components[componentId].component)}
+      </div>
     </div>
   );
 }
