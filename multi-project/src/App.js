@@ -1,18 +1,33 @@
 import './index.css';
-import Header from './Header';
-import LeftBar from './LeftBar';
-import Main from './Main';
-import Footer from './Footer';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+//Components
+import Navbar from './components/Navbar';
+
+//Pages
+import Home from './pages/Home';
+import About from './pages/About';
+import Algos from './pages/Algos';
 
 function App() {
   return (
-    <main className="grid">
-      <Header />
-      <LeftBar />
-      <Main />
+    <div>
+      <Router>
+        <Navbar/>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/algos">
+            <Algos />
+          </Route>
+        </Switch>
+      </Router>
       
-    </main>
+    </div>
   );
 }
 
