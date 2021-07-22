@@ -30,11 +30,11 @@ const StringReverser = () => {
 
   return (
     <div className="string-reverser">
-			<div>
+			<h1>{string}</h1>
+			<div className="input">
 				<input type="text" placeholder="type here..." onChange={(e) => handleChange(e)}></input>
 			</div>
       <div>
-				<h1>{string}</h1>
 				{isPalyndrome && <h2>Palyndrome!</h2>}
 				{isTyping && <h6>Character count: {string.length} </h6>}
 			</div>

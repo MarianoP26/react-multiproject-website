@@ -14,10 +14,10 @@ function App() {
 
   return (
     <div>
-      <div>
-        {components.map((Component, index) => <button className="btn-component-selecor" key={index} onClick={() => handleClick(index)}>{Component.name}</button>)}
+      <div className="btn-container">
+        {components.map((Component, index) => <button className="btn-component-selector" key={index} onClick={() => handleClick(index)}>{Component.name}</button>)}
       </div>
-      <div>
+      <div className="component-container">
         {render && React.createElement(components[componentId].component)}
       </div>
     </div>
